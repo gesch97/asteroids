@@ -1,3 +1,4 @@
+from typing import Type, Self
 import pygame
 
 
@@ -18,5 +19,9 @@ class CircleShape(pygame.sprite.Sprite):
         pygame.draw.polygon(screen, (255, 255, 255), self.triangle(), 2)
 
     def update(self, dt):
-        # sub-classes must override
         pass
+        # sub-classes must override
+
+    def check_collosion(self, other: Self) -> bool:
+        dst = pygame.Vector2.distance_to(self.position, other.position)
+        return dst < self.radius + other.radius
