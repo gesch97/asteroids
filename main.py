@@ -43,6 +43,9 @@ def main():
             if obj.check_collosion(player):
                 print("Game over!")
                 exit()
+            for shot in gshots:
+                if shot.check_collosion(obj):
+                    obj.split()
 
         screen.fill((0, 0, 0))
         for obj in gdrawable:
